@@ -9,3 +9,9 @@ autopublish
 coffeescript
 accounts-ui
 accounts-password
+mrt:moment
+insecure
+vasaka:livescript-compiler
+mquandalle:jade
+particle4dev:sass
+iron:router
