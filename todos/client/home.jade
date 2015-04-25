@@ -2,36 +2,17 @@ head
 	title my-homework
 	meta(charset='utf-8')
 body
-	div.container
-		div.row
-			div.col-sm-6.col-md-4.col-md-offset-4
-				//- if currentUser
-				if stateIs 'SignIn'
-					h1.text-center.login-title Sign in to our Passport app  
-						div.account-wall
-							form(class='form-signin', action='/login', method='POST')
-								input(type='text', name='username' class='form-control', placeholder='Username',required, autofocus)
-								input(type='password', name='password' class='form-control', placeholder='Password', required)
-								button(class='btn btn-lg btn-primary btn-block SignIn') Sign in
-								button(class='btn btn-lg btn-warning btn-block Register') Register
-								span.clearfix
-				else if stateIs 'Register'
-					h1.text-center.login-title Registration Details
-						div.signup-wall
-							form(class='form-signin', action='/signup', method='POST')
-								input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
-								input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
-								input(type='email', name='email', class='form-control', placeholder='Email',required)
-								input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
-								input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
-								div.role-radio
-									label.checkbox-inline
-										input(type="radio", name='role', value='student', checked)
-										学生
-									label.checkbox-inline
-										input(type="radio", name='role', value='teacher')
-										老师
-								button(class='btn btn-lg btn-primary btn-block Register') Register
-								button(class='btn btn-lg btn-warning btn-block SignIn') Sign in
-								span.clearfix
+	.container
+		if currentUser
+			+header
+			+listview
+		else
+			+login
+			+register
 
+template(name="header")
+	.row
+		.col-md-2.h3 Hello #{currentUser.username}
+		.col-md-4.h3 #{currentUser.profile.role}
+		.col-md-2.col-md-offset-4
+			button(class='btn btn-lg btn-danger btn-block LogOut') Log Out

@@ -1,0 +1,21 @@
+template(name="register")
+	if stateIs 'Register'
+		h1.text-center.login-title Registration Details
+			.signup-wall
+				form(class='form-signin', action='/signup', method='POST')
+					input(type='text', name='username', id = 'username', class='form-control', placeholder='Username',required, autofocus)
+					input(type='password', name='password', id = 'password', class='form-control nomargin', placeholder='Password', required)
+					.role-radio
+						label.checkbox-inline
+							input(type="radio", name='role', id="student", value='student', checked)
+							学生
+						label.checkbox-inline
+							input(type="radio", name='role', id="teacher", value='teacher')
+							老师
+					.row
+						.col-md-6
+							button(class='btn btn-lg btn-primary btn-block Register') Register
+						.col-md-6
+							button(class='btn btn-lg btn-warning btn-block SignIn') Return to Sign in
+					span.clearfix
+
