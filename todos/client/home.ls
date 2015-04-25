@@ -2,7 +2,14 @@ Meteor.startup !->
 	Session.set-default 'state', 'SignIn'
 
 if Meteor.is-client
-	Template.body.helpers {
+	Template.login.helpers {
+		"state": ->
+			Session.get 'state'
+		"stateIs": (state)->
+			return state is Session.get 'state'
+	}
+
+	Template.register.helpers {
 		"state": ->
 			Session.get 'state'
 		"stateIs": (state)->
@@ -15,7 +22,6 @@ if Meteor.is-client
 				name = ($ '#username')[0].value
 				pw = ($ '#password')[0].value
 				Meteor.login-with-password name, pw, (err)!->
-					Session.set 'state', 'listview'
 					console.log err if err
 			else
 				Session.set 'state', 'SignIn'
