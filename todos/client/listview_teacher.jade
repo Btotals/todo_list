@@ -1,0 +1,20 @@
+template(name="assign")
+	.panel.panel-primary
+		each assignments
+			+assignment
+		.panel-heading
+			h3.panel-title 布置作业
+		.panel-body
+			form(role="form", action="/assignment", method='POST', class="assign")
+				.form-group
+					label.control-label(for="ass-name") 作业名称
+					input.form-control#ass-name(type="text", placeholder="请输入作业名称", required)
+					br
+					label 作业要求
+					textarea.form-control#ass-require(rows="10", placeholder="请输入作业作业要求", required)
+					br
+					label.control-label(for="ass-deadline") 截止时间
+					input.form-control#ass-deadline(type="date", placeholder="请输入截止时间", required)
+					br
+					button.btn.btn-success(type="submit") 发布
+							//- button.btn.btn-info.back-to-home(type="button") 返回

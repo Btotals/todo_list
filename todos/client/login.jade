@@ -2,7 +2,7 @@ template(name="login")
 	if stateIs 'SignIn'
 		.row
 			.col-sm-6.col-md-4.col-md-offset-4
-				h1.text-center.login-title Sign in to my-homework system  
+				h1.text-center.login-title Sign in to my-homework system
 					.account-wall
 						form(class='form-signin', action='/login', method='POST')
 							input(type='text', name='username' class='form-control', id='username', placeholder='Username',required, autofocus)

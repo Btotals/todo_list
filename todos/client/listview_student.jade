@@ -1,0 +1,6 @@
+template(name="submit")
+	.panel.panel-primary
+		if roleIsStudent
+			if stateIs 'listview'
+				each assignments
+					+assignment

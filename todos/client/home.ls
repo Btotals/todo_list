@@ -1,19 +1,28 @@
 Meteor.startup !->
 	Session.set-default 'state', 'SignIn'
+	Session.set-default 'hasErr', false
+
 
 if Meteor.is-client
+	Template.err-message.helpers {
+		"hasErr": ->
+			Session.get 'hasErr'
+		"errMessage": ->
+			Session.get 'errMessage'
+	}
+
 	Template.login.helpers {
 		"state": ->
 			Session.get 'state'
 		"stateIs": (state)->
-			return state is Session.get 'state'
+			state is Session.get 'state'
 	}
 
 	Template.register.helpers {
 		"state": ->
 			Session.get 'state'
 		"stateIs": (state)->
-			return state is Session.get 'state'
+			state is Session.get 'state'
 	}
 
 	Template.body.events {
@@ -22,10 +31,14 @@ if Meteor.is-client
 				name = ($ '#username')[0].value
 				pw = ($ '#password')[0].value
 				Meteor.login-with-password name, pw, (err)!->
-					console.log err if err
+					if err
+						console.log err
+						Session.set 'hasErr', true
+						Session.set 'errMessage', err.message
+					else Session.set 'state', 'listview'
 			else
 				Session.set 'state', 'SignIn'
-			return false
+			false
 
 		"click .Register": !->
 			if Session.equals 'state', 'Register'
@@ -40,5 +53,7 @@ if Meteor.is-client
 				Session.set 'state', 'Register'
 
 		"click .LogOut": !->
-			Meteor.logout (err)!-> console.log err if err
+			Meteor.logout (err)!->
+				console.log err if err
+				Session.set 'state', 'SignIn'
 	}

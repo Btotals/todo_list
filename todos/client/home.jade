@@ -9,6 +9,8 @@ body
 		else
 			+login
 			+register
+		if hasErr
+			+errMessage
 
 template(name="header")
 	.row
@@ -16,3 +18,8 @@ template(name="header")
 		.col-md-4.h3 #{currentUser.profile.role}
 		.col-md-2.col-md-offset-4
 			button(class='btn btn-lg btn-danger btn-block LogOut') Log Out
+
+template(name="errMessage")
+	.row
+		.col-md-2.h3 Error: 
+		.col-md-4.h3 #{errMessage}

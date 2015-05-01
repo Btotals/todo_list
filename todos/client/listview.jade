@@ -1,33 +1,22 @@
 template(name='listview')
 	.container
-			if roleIsTeacher
-				.panel.panel-primary
-					//- for ass in assignment
-						//- .panel.panel-default
-						//- 	.row
-						//- 		.col-md-3.h3 作业名称:#{ass.assName}
-						//- 		.col-md-2.h3 老师:#{ass.teacherName}
-						//- 		.col-md-7.h3 截止时间:#{ass.deadline}
-						//- 	.row
-						//- 		.col-md-2.h3 作业要求
-						//- 		.col-md-8.h3 #{ass.description}
-						//- 		.col-md-2
-						//- 			a.back-button(href='/assignment/#{ass._id}')
-						//- 				button.btn.btn-info(type="button") 查看
-					.panel-heading
-						h3.panel-title 布置作业
-					.panel-body
-						form(role="form", action="/assignment", method='POST')
-							.form-group
-								label.control-label(for="homework-name") 作业名称
-								input.form-control#homework-name(type="text", placeholder="请输入作业名称", required)
-								br
-								label 作业要求
-								textarea.form-control(rows="10", placeholder="请输入作业作业要求", required)
-								br
-								label.control-label(for="homework-deadline") 截止时间
-								input.form-control#homework-deadline(type="date", placeholder="请输入截止时间", required)
-								br
-								button.btn.btn-success() 发布
-								a.back-button(href='/home')
-									button.btn.btn-info(type="button") 返回
+		if roleIsTeacher
+			if stateIs 'listview'
+				+assign
+				
+		if roleIsStudent
+			if stateIs 'listview'
+				+submit
+
+template(name='assignment')
+	.panel.panel-default
+		.row
+			.col-md-3.h3 作业名称:#{assName}
+			.col-md-2.h3 老师:#{teacherName}
+			.col-md-7.h3 截止时间:#{assDeadline}
+		.row
+			.col-md-2.h3 作业要求
+			.col-md-8.h3 #{assRequire}
+			.col-md-2
+				a.back-button(href='/assignment/#{ass._id}')
+					button.btn.btn-info.show-detail(type="button") 查看
