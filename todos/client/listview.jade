@@ -3,10 +3,16 @@ template(name='listview')
 		if roleIsTeacher
 			if stateIs 'listview'
 				+assign
+			else if stateIs 'detail'
+				+detail
+			else if stateIs 'assignment-detail'
+				+assignmentDetail
 				
-		if roleIsStudent
+		else
 			if stateIs 'listview'
 				+submit
+			else if stateIs 'detail'
+				+detail
 
 template(name='assignment')
 	.panel.panel-default
@@ -18,5 +24,7 @@ template(name='assignment')
 			.col-md-2.h3 作业要求
 			.col-md-8.h3 #{assRequire}
 			.col-md-2
-				a.back-button(href='/assignment/#{ass._id}')
+				if roleIsTeacher
+					button.btn.btn-info.assignment-detail(type="button") 查看
+				else
 					button.btn.btn-info.show-detail(type="button") 查看

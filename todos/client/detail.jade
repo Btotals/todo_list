@@ -1,0 +1,37 @@
+template(name="detail")
+	.container
+		if roleIsTeacher
+			each homeworks
+				.panel.panel-heading
+					.panel.panel-default
+						.row
+							.col-md-12.h2 所有已提交的作业
+							.row
+								.col-md-4.col-md-offset-2.h4 姓名：#{studentName}
+								.col-md-3.h4 评分：#{grade}
+								.col-md-2
+									button.btn.btn-info.assignment-detail(type="button") 查看
+			button.btn.btn-warning.return(type="button") 返回
+
+
+		if roleIsStudent
+			.panel.panel-heading
+				h2.panel-title 得分：#{hw.grade}
+			each ass
+				.panel.panel-heading
+					.panel.panel-default
+						.row
+							.col-md-3.h3 作业名称:#{assName}
+							.col-md-2.h3 老师:#{teacherName}
+							.col-md-7.h3 截止时间:#{assDeadline}
+						.row
+							.col-md-2.h3 作业要求
+							.col-md-8.h3 #{assRequire}
+			form(role="form", action="/", method='POST')
+				.form-group
+					label 提交作业
+						textarea.form-control#cont(rows="10", placeholder="在这里写下要提交的内容", name="homework[description]", required) #{hw.content}
+					br
+					button.btn.btn-success.submit(type="button") 提交
+					button.btn.btn-info.return(type="button") 返回
+

@@ -1,6 +1,8 @@
 Meteor.startup !->
 	Session.set-default 'state', 'SignIn'
 	Session.set-default 'hasErr', false
+	Session.set-default 'assignmentId', ''
+	Session.set-default 'homeworkId', ''
 
 
 if Meteor.is-client
