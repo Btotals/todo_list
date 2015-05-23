@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="7" tilewidth="64" tileheight="64" nextobjectid="62">
+ <tileset firstgid="1" name="empty" tilewidth="64" tileheight="64">
+  <image source="tile/empty.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="2" name="stone" tilewidth="64" tileheight="64">
+  <image source="tile/stone.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="3" name="crystal" tilewidth="64" tileheight="64">
+  <image source="tile/crystal.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="4" name="dest" tilewidth="64" tileheight="64">
+  <image source="tile/dest.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="hehe" tilewidth="64" tileheight="64">
+  <image source="tile/hehe.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="6" name="box" tilewidth="64" tileheight="64">
+  <image source="tile/box.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="7" name="red" tilewidth="64" tileheight="64">
+  <image source="tile/red.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="Collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="empty" width="8" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAMGHHgwSKPDwAADjwAHw==
+  </data>
+ </layer>
+ <layer name="stone" width="8" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYCKAcYHBIo8PAwAYCAA1
+  </data>
+ </layer>
+ <layer name="crystal" width="8" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA/YKYyHx8AAAVUABA=
+  </data>
+ </layer>
+ <layer name="dest" width="8" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAPsAxyeRgAAAkAABU=
+  </data>
+ </layer>
+ <layer name="Meta" width="8" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjZ2BgYCeAcQFy5dnR5NHVkCOPCwMAXFAA2g==
+  </data>
+ </layer>
+ <objectgroup name="player">
+  <object id="36" name="zergling" gid="5" x="256" y="384" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="boxs">
+  <object id="40" gid="6" x="192" y="320" width="64" height="64">
+   <properties>
+    <property name="Movable" value="true"/>
+   </properties>
+  </object>
+  <object id="58" gid="6" x="128" y="256" width="64" height="64">
+   <properties>
+    <property name="Movable" value="true"/>
+   </properties>
+  </object>
+  <object id="59" gid="6" x="128" y="320" width="64" height="64">
+   <properties>
+    <property name="Movable" value="true"/>
+   </properties>
+  </object>
+  <object id="60" gid="6" x="192" y="192" width="64" height="64">
+   <properties>
+    <property name="Movable" value="true"/>
+   </properties>
+  </object>
+  <object id="61" gid="6" x="256" y="256" width="64" height="64">
+   <properties>
+    <property name="Movable" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
